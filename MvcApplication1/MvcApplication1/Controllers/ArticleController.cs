@@ -9,14 +9,18 @@ namespace MvcApplication1.Controllers
 {
     public class ArticleController : Controller
     {
-        //
-        // GET: /Article/
-
+        public ContentResult Index()
+        {
+            return new ContentResult() { Content = ("Hello World") };
+        }
+        public ContentResult GetByUrl(string seoUrl)
+        {
+            return new ContentResult() { Content = "#" + seoUrl + "#" };
+        }
         public ActionResult Recent()
         {
             var model = new RecentDataModel();
             return View(model);
         }
-
     }
 }

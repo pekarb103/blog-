@@ -9,6 +9,7 @@ namespace MvcApplication1
 {
     public class RouteConfig
     {
+        private static readonly string[] Namespaces = new[] {"Routes.Controllers"};
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -17,6 +18,8 @@ namespace MvcApplication1
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                , namespaces: Namespaces
+                , constraints: new {id = @"(\d+)?"}
             );
         }
     }
