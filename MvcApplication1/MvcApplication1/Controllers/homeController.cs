@@ -33,5 +33,15 @@ namespace MvcApplication1.Controllers
             var model = new ArticleModel();
             return View(model);
         }
+        public ActionResult Index5()
+        {
+            var model = new ArticleModel();
+            return View(model);
+        }
+        public ActionResult Index6()
+        {
+            var model = new ArticleModel();
+            return View(model);
+        }
     }
 }
