@@ -15,6 +15,14 @@ namespace MvcApplication1
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               name: "article",
+               url: "article-{seoUrl}",
+               defaults: new { controller = "Article", action = "GetByUrl", seoUrl = string.Empty }
+               , namespaces: Namespaces
+               , constraints: new { id = @"(\d+)?" }
+           );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

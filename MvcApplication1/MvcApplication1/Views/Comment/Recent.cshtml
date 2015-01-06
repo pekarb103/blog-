@@ -12,7 +12,7 @@
             <li>
                 <p class="date">@item.Date.ToString("D")<span>@item.Date.ToString("HH:mm")</span></p>
                 <p class="post">
-                @Html.ActionLink(item.Text, "ById", "Comment", new {id = item.ID }, null)</p>
+                <a href="@Url.RouteUrl("default", new { controller = "comment", action = "ById", id = item.ID})">@item.Text</p>
             </li>
         }
     </ul>
