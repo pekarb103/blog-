@@ -18,6 +18,7 @@ namespace MvcApplication1.Controllers
             return View(new ArticleModel());
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Index(ArticleModel model)
         {
             if (model.NewComment != null && ModelState.IsValid) 
