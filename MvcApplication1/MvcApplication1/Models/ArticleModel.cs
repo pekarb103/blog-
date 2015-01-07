@@ -30,6 +30,7 @@ namespace MvcApplication1.Models
             }
         }
         public AddCommentModel NewComment { get; set; }
+        public UserModel User { get; set; }
        // public ICollection<CommentItemModel> Comments { get; set; }
     }
 }
