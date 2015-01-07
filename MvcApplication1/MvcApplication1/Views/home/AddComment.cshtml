@@ -4,8 +4,10 @@
 @model MvcApplication1.Models.ArticleModel
 <div class="add-comment">
     <form action="@Url.Action("Index", "Home")" method="post">
+        @Html.ValidationSummary()
         @Html.ValidationMessageFor(m => m.NewComment.Comment)
         @Html.TextAreaFor(m => m.NewComment.Comment, new { placeholder = "Your comment", @class = "txt-area" })
+        @Html.ValidationMessageFor(m => m.User.Age)
         @Html.TextBoxFor(m => m.User.Age)
         <div class="wrap-btn">
             <button class="btn-cancel">Cancel</button>
