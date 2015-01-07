@@ -1,12 +1,11 @@
 ﻿@{
     Layout = null;
 }
-@model MvcApplication1.Models.AddCommentModel
+@model MvcApplication1.Models.ArticleModel
 <div class="add-comment">
-    <form action="@Url.Action("AddComment")" method="post">
-        @Html.TextAreaFor(m => m.Comment, new { placeholder = "Your comment", @class="txt-area"})
-        @Html.TextBoxFor(m => m.User.Username)
-        @Html.TextBoxFor(m => m.User.Age)
+    <form action="@Url.Action("Index", "Home")" method="post">
+        @Html.ValidationMessageFor(m => m.NewComment.Comment)
+        @Html.TextAreaFor(m => m.NewComment.Comment, new { placeholder = "Your comment", @class = "txt-area" })
         <div class="wrap-btn">
             <button class="btn-cancel">Cancel</button>
             <button class="btn-save">Save changes</button>

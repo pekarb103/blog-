@@ -1,4 +1,5 @@
 ﻿using MvcApplication1.Models;
+using MvcApplication1.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,35 +10,21 @@ namespace MvcApplication1.Controllers
 {
     public class homeController : Controller
     {
-        //public ActionResult AddComment()
-        //{
-        //    string comment = Request.Form["Comment"];
-        //    return RedirectToAction("Index", "Home");
-        //}
-        //public ActionResult AddComment(string Comment)
-        //{
-        //    return RedirectToAction("Index", "Home");
-        //}
-        public ActionResult AddComment(AddCommentModel model)
-        {
-            return RedirectToAction("index", "home");
-        }
-        //public ActionResult Index()
-        //{
-        //    var model = new ArticleModel();
-        //    return View(model);
-        //}
-
-        //public ActionResult Index(string id)
-        //{
-        //    var model = new ArticleModel();
-        //    return View(model);
-        //}
-
+        [HttpGet]
         public ActionResult Index ()
         {
-            string query = Request.QueryString["Foo"];
+            //string query = Request.QueryString["Foo"];
             var model = new ArticleModel();
+            return View(new ArticleModel());
+        }
+        [HttpPost]
+        public ActionResult Index(ArticleModel model)
+        {
+            if (model.NewComment != null && ModelState.IsValid) 
+            {
+                CommentsRepository.Comments.Add(model.NewComment.Comment);
+                return View(new ArticleModel());
+            }
             return View(model);
         }
     }
