@@ -9,6 +9,15 @@ namespace MvcApplication1.Controllers
 {
     public class homeController : Controller
     {
+        //public ActionResult AddComment()
+        //{
+        //    string comment = Request.Form["Comment"];
+        //    return RedirectToAction("Index", "Home");
+        //}
+        public ActionResult AddComment(string Comment)
+        {
+            return RedirectToAction("Index", "Home");
+        }
         //public ActionResult Index()
         //{
         //    var model = new ArticleModel();
