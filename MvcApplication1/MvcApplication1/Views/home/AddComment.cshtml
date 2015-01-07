@@ -1,0 +1,16 @@
+﻿@{
+    Layout = null;
+}
+@model MvcApplication1.Models.AddCommentModel
+<div class="add-comment">
+    <form action="@Url.Action("AddComment")" method="post">
+        @Html.TextAreaFor(m => m.Comment, new { placeholder = "Your comment", @class="txt-area"})
+        @Html.TextBoxFor(m => m.User.Username)
+        @Html.TextBoxFor(m => m.User.Age)
+        <div class="wrap-btn">
+            <button class="btn-cancel">Cancel</button>
+            <button class="btn-save">Save changes</button>
+            <p>Lorem dolor sit amet, <a href="#">adipiscing</a></p>
+        </div>
+    </form>
+</div>

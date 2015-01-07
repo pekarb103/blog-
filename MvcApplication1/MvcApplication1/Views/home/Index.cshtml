@@ -29,16 +29,6 @@
             </li>
         }
     </ul>
+    @Html.Partial("~/Views/Home/AddComment.cshtml", null, new ViewDataDictionary())
     </div>
-    <div class="wrap-comments">
-    <div class="add-comment">
-        <form action="/home/addcomment" method="post">
-            <textarea name="comment" placeholder="Your comment" class="txt-area"></textarea>
-            <div class="wrap-btn">
-                <button class="btn-cancel">Cancel</button>
-                <button class="btn-save">Save changes</button>
-                @*<p>Lorem ipsum dolor sit amet, <a href="#">adipiscing</a></p>*@
-            </div>
-        </form>
-    </div>
-</div>
+    

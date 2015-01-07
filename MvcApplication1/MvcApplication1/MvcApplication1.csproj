@@ -132,12 +132,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddCommentModel.cs" />
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\CommentItemModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\LikeModel.cs" />
     <Compile Include="Models\RecentDataItemModel.cs" />
     <Compile Include="Models\RecentDataModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

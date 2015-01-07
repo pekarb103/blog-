@@ -14,9 +14,13 @@ namespace MvcApplication1.Controllers
         //    string comment = Request.Form["Comment"];
         //    return RedirectToAction("Index", "Home");
         //}
-        public ActionResult AddComment(string Comment)
+        //public ActionResult AddComment(string Comment)
+        //{
+        //    return RedirectToAction("Index", "Home");
+        //}
+        public ActionResult AddComment(AddCommentModel model)
         {
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("index", "home");
         }
         //public ActionResult Index()
         //{
