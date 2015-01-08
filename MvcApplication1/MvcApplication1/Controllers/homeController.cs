@@ -1,6 +1,8 @@
 ﻿using MvcApplication1.Models;
 using MvcApplication1.Repository;
 using System;
+using System.Data.SqlClient;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +10,35 @@ using System.Web.Mvc;
 
 namespace MvcApplication1.Controllers
 {
-    public class homeController : Controller
+    public class HomeController : Controller
     {
         [HttpGet]
-        public ActionResult Index ()
+        public ActionResult Index(string title)
         {
-            //string query = Request.QueryString["Foo"];
-            var model = new ArticleModel();
-            return View(new ArticleModel());
+
+            if (title == null)
+            {
+                title = "This is my first title";
+            }
+
+            var readers = new NewDataReader();
+
+            return View(readers.GetArticleModel(title));
         }
+
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Index(ArticleModel model)
         {
-            if (model.NewComment != null && ModelState.IsValid) 
+            var title = "This is my first title";
+
+            if (model.NewComment != null && ModelState.IsValid)
             {
-                CommentsRepository.Comments.Add(model.NewComment.Comment);
-                return View(new ArticleModel());
+                var readers = new NewDataReader();
+                readers.AddComment(title, model.NewComment.Comment);
+                //CommentsRepository.Comments.Add(model.NewComment.Comment);
+                ModelState.Clear();
+                return View(readers.GetArticleModel(title));
             }
             return View(model);
         }

@@ -1,5 +1,6 @@
 ﻿using MvcApplication1.Repository;
 using System;
+﻿using Database.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,12 +10,16 @@ namespace MvcApplication1.Models
 {
     public class ArticleModel
     {
+        private readonly PostModel post;
+        private readonly ICollection<string> comments;
+
         public ArticleModel()
         {
             Title = "This is an article title";
-            Body = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim orci dolor, sed sodales nibh molestie nec. In hac habitasse platea dictumst. Integer commodo mi mi, et dapibus nisi mattis eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque tristique ligula a sem molestie pretium. Quisque dolor justo, placerat eu tincidunt in, aliquam at velit. Aenean a tincidunt ipsum. Fusce finibus vel risus quis pulvinar. Vestibulum condimentum vel massa sit amet vestibulum. Suspendisse ante elit, pulvinar eu elit sed, condimentum rhoncus justo. Curabitur auctor, velit vitae posuere efficitur, felis orci fringilla nunc, eget auctor sem quam sed magna. Aenean tristique dui lacinia mauris euismod, at hendrerit nisl volutpat. Sed gravida eleifend ex, eu ultricies nisi convallis vel.</p>";
+            Body = "<p>Покупка товаров из-за границы через интернет — дело уже привычное. Впрочем, иногда есть риск попасться на удочку мошенника. Именно такая история произошла с жительницей Гродно, которая присмотрела себе Jeep Grand Cherokee из Великобритании по сносной цене. Продавец попросил $6 тыс. задатка. Женщина перевела деньги. На этом их переписка закончилась. В Беларуси возбуждено уголовное дело по статье «Мошенничество». Женщина 1978 года рождения выбирала себе автомобиль через объявления в интернете. На одном из зарубежных ресурсов она нашла приемлемый вариант. В качестве продавца автомобиля Jeep Grand Cherokee выступил неизвестный из Великобритании, предложенная им цена была существенно ниже стоимости других внедорожников аналогичных моделей. Чтобы отправить покупку в Беларусь, продавец попросил посредством денежного перевода перечислить задаток в размере $6 тыс. и как только получил эту сумму, тут же прекратил переписку. Через пару недель аналогичное фото Jeep Grand Cherokee красовалось уже на другом сайте — для очередной доверчивой жертвы. Возбуждено уголовное дело по ч. 3 ст. 209 «Мошенничество» УК РБ.</p>";
             Date = DateTime.Now;
             Likes = new Collection<LikeModel>();
+            comments = CommentsRepository.Comments;
         }
         public string Title { get; set; }
         public string Body { get; set; }
@@ -22,11 +27,25 @@ namespace MvcApplication1.Models
 
 
         public ICollection<LikeModel> Likes { get; set; }
+         public ArticleModel(PostModel post, ICollection<string> comments)
+         {
+             this.post = post;
+             this.comments = comments;
+         }
+
+         public PostModel Post
+         {
+             get
+             {
+                 return post;
+             }
+         }
+
         public ICollection<string> Comments 
         { 
             get
             {
-                return CommentsRepository.Comments;
+                return comments;
             }
         }
         public AddCommentModel NewComment { get; set; }
